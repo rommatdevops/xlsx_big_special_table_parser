@@ -192,3 +192,4 @@ if __name__ == '__main__':
     read_notification_from_column_D()
 
     file.save(FILENAME + "_checked.xlsx")
+    #test merge
