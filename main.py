@@ -98,7 +98,7 @@ def read_liqpay():
 
 
     # print(liqpay['3.15'])
-    print(liqpay)
+    # print(liqpay)
     return liqpay
 
 def get_unique_order_number(order_dict, vhodjenia_A, vhodjenia_B):
@@ -113,7 +113,7 @@ def get_unique_order_number(order_dict, vhodjenia_A, vhodjenia_B):
     unique_values = [value for value, count in value_counts.items() if count == 1]
     unique_keys = [key for key, value in order_dict.items() if value in unique_values]
 
-    # print(unique_values)
+    # print(unique_keys)
     fill_row(unique_keys, redFill)
 
     vhodjenia_A_unique = rm_unique_from_vhodjenia(unique_keys, vhodjenia_A)
@@ -121,6 +121,23 @@ def get_unique_order_number(order_dict, vhodjenia_A, vhodjenia_B):
 
     get_povernenya(vhodjenia_A_unique, vhodjenia_B_unique)
     get_different_sum(vhodjenia_A_unique, vhodjenia_B_unique)
+
+    unique_key_value = get_unique_value(unique_keys)
+    # print(unique_values)
+    # for k, v in liqpay_list.items():
+    #     # if v in unique_key_value.values():
+    #     print(k,v)
+
+def get_unique_value(unique_keys):
+    print('getuniquevalue')
+    unique_keys_values = {}
+    for i in unique_keys:
+       
+        
+        if sheet.cell(row=i, column=6).value != ' ':
+            unique_keys_values[i] = str(sheet.cell(row=i, column=6).value)
+    print(unique_keys_values)
+    return unique_keys_values
 
 def get_different_sum(vhodjenia_A, vhodjenia_B):
     list_of_number_commision = []
